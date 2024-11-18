@@ -1,0 +1,71 @@
+/* see_my_sell_vehicles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.sellvehicle-list-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+.sellvehicle-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.sellvehicle-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.sellvehicle-card:hover {
+    transform: scale(1.05);
+}
+
+.sellvehicle-card img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+.sellvehicle-details {
+    padding: 15px;
+}
+
+.sellvehicle-details h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.sellvehicle-details p {
+    margin: 5px 0;
+    color: #555;
+}
+
+a {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+a:hover {
+    background-color: #2980b9;
+}

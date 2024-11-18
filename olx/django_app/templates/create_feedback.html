@@ -1,0 +1,101 @@
+{% extends 'combuyernav.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Feedback</title>
+    <style>
+        .main{
+            margin-left:380px;
+            margin-right:200px;
+            margin-top:100px;
+            
+            
+        }
+        .card{
+            width:900px;
+            border:1px solid  rgb(28, 58, 103);
+        }
+        .col img{
+            margin-top:120px;
+            margin-left:20px;
+        }
+        .card input{
+            width:320px;
+        }
+        .card button{
+            width:320px;
+            background:rgb(28, 58, 103);
+            color:white;
+            padding:15px;
+            border-radius:20px;
+        }
+        .carousel-item img {
+            height: 450px; /* Set the desired height for all images */
+           
+            border-radius:25px;
+            
+                          
+        }
+        .adv{
+            margin-left:200px;
+        }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000;
+            display: none; /* Initially hidden */
+        }        
+    </style>
+</head>
+<body>
+
+    <div class="main">
+        <div class="card mb-3" style="max-width: 890px;">
+            <div class="row g-0">
+                <div class="col-md-7" style="margin-top:50px;margin:left:20px;">
+                    <!-- You can replace the src attribute with your actual image source -->
+                    <img src="{% static 'images/advreview.jpg' %}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-5">
+                    <div class="card-body">
+                        <h3 class="card-title" style="color:rgb(28, 58, 103); ">Write About our service</h3>
+                        <form method="post" action="{% url 'create_feedback' %}" class="feedback-form" id="feedback-form">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="submit-button">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    
+    <div class="popup" id="popup-message">
+        Please enter a rating equal to or below 5.
+    </div>
+    
+    <script>
+        // Add JavaScript to check rating before form submission
+        document.getElementById('feedback-form').addEventListener('submit', function(event) {
+            var ratingInput = document.getElementById('id_rating').value;
+            if (ratingInput > 5) {
+                // Show popup message
+                document.getElementById('popup-message').style.display = 'block';
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    </script>   
+
+</body>
+</html>
+{% endblock %}

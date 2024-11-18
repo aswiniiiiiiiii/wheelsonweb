@@ -1,0 +1,106 @@
+{% extends 'combuyernav.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            
+            color: black;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        h1, h2 {
+            margin-top: 30px;
+        }
+        
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        
+        .card {
+            width: calc(20% - 20px); /* Adjust width as needed */
+            background-color: #fff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .card img {
+            width: 100%; 
+            height: 180px;
+            display: block;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+        
+        .card h3 {
+            text-align: center;
+        }
+        
+        .card p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+
+    <h1>Search Results for "{{ query }}"</h1>
+</header>
+
+<section>
+    
+    <div class="card-container">
+        {% for vehicle in sell_vehicles %}
+        <div class="card">
+            <a href="{% url 'sellvehicle_detail' vehicle.id %}">
+                <img src="{{ vehicle.image.url }}" alt="{{ vehicle.vehicle_name }}">
+            </a>
+            
+            <h3>{{ vehicle.vehicle_name }}</h3>
+            <p><strong>Registration Number:</strong> {{ vehicle.registration_number }}</p>
+            <p><strong>Brand:</strong> {{ vehicle.brand }}</p>
+            <p><strong>Vehicle Type:</strong> {{ vehicle.vehicle_type }}</p>
+            <p><strong>Year:</strong> {{ vehicle.year }}</p>
+            <p><strong>Price:</strong> ${{ vehicle.price }}</p>
+        </div>
+        {% empty %}
+        
+        {% endfor %}
+        {% for vehicle in rent_vehicles %}
+        <div class="card">
+            <a href="{% url 'rentvehicle_detail' vehicle.id %}">
+                <img src="{{ vehicle.image.url }}" alt="{{ vehicle.vehicle_name }}">
+            </a>
+            <h3>{{ vehicle.vehicle_name }}</h3>
+            <p><strong>Registration Number:</strong> {{ vehicle.registration_number }}</p>
+            <p><strong>Brand:</strong> {{ vehicle.brand }}</p>
+            <p><strong>Vehicle Type:</strong> {{ vehicle.vehicle_type }}</p>
+            <p><strong>Year:</strong> {{ vehicle.year }}</p>
+            <p><strong>Price per Day:</strong> ${{ vehicle.price_per_day }}</p>
+        </div>
+        {% empty %}
+        
+        {% endfor %}
+    </div>
+</section>
+</body>
+</html>
+{% endblock content %}

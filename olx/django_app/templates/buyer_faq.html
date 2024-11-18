@@ -1,0 +1,79 @@
+{% extends 'combuyernav.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        li {
+            margin-bottom: 15px;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .answer {
+            margin-top: 5px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Frequently Asked Questions</h1>
+
+{% if faq_list %}
+    <ul>
+        {% for question in faq_list %}
+            <li>
+                <a href="#{{ question.id }}" onclick="toggleAnswer('{{ question.id }}')">
+                    {{ question.question }}
+                </a>
+                <div id="{{ question.id }}_answer" class="answer" style="display: none;">
+                    {{ question.answer }}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No questions available in the FAQ.</p>
+{% endif %}
+
+<script>
+    function toggleAnswer(questionId) {
+        var answerDiv = document.getElementById(questionId + '_answer');
+        if (answerDiv.style.display === 'none') {
+            answerDiv.style.display = 'block';
+        } else {
+            answerDiv.style.display = 'none';
+        }
+    }
+</script>
+
+</body>
+</html>
+{% endblock %}

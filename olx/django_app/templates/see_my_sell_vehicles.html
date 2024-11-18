@@ -1,0 +1,111 @@
+{% extends 'comseller.html' %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Sell Vehicles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .sellvehicle-list-container {
+            max-width: 1500px;
+            margin: 20px auto;
+           
+        }
+        h1 {
+            text-align: center;
+        }
+        .sellvehicle-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .sellvehicle-card img {
+            width: 250px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+        .sellvehicle-details {
+            padding: 20px;
+        }
+        .sellvehicle-details h2 {
+            margin-top: 0;
+        }
+        .sellvehicle-details p {
+            margin: 5px 0;
+        }
+        .sellvehicle-details a {
+            display: inline-block;
+            background-color: #4caf50;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .sellvehicle-details a:hover {
+            background-color: #45a049;
+        }
+        .sellvehicle-list {
+            display: flex; 
+            flex-wrap: wrap;
+            gap: 20px; 
+        }
+        
+        .sellvehicle-card {
+            width: calc(20% - 20px); 
+            border: 1px solid #ccc;
+            padding: 10px;           
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .sellvehicle-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .sellvehicle-card img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+    </style>
+</head>
+<body>
+    <br>
+    <div class="heading" style="text-align: center; font-size: 30px">
+    <h2>MY SEll VEHICLES</h2>
+</div>
+    <div class="sellvehicle-list-container">
+        
+        <div class="sellvehicle-list">
+            {% for sellvehicle in sell_vehicles %}
+            <div class="sellvehicle-card">
+                <img src="{{ sellvehicle.image.url }}" alt="{{ sellvehicle.vehicle_name }}">
+                <div class="sellvehicle-details" >
+                    <h4 class="name" style="text-align:center;">{{ sellvehicle.vehicle_name }}</h4>
+                    <p><strong>Brand:</strong> {{ sellvehicle.brand }}</p>
+                    <p><strong>Year:</strong> {{ sellvehicle.year }}</p>
+                    <p><strong>Price:</strong> ${{ sellvehicle.price }}</p>
+                    <a class="but" style="margin-left:35px;margin-top:5px;background:rgb(28, 58, 103);" href="{% url 'sellvehicle_seller_detail' pk=sellvehicle.pk %}">View Details</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+</div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,97 @@
+.nav-item{
+    gap:120px;
+}
+.big-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: rgb(100, 96, 96);
+    margin-top: 600px;
+        
+}
+#serDropdown{
+     color: white;
+}
+
+.username-link {
+    color: #f2eeed; /* Change to your desired color */
+    text-decoration: none;
+}
+.dropdown{
+    background-color: rgb(92, 86, 86);
+    color:white; 
+}
+    
+.footer-section {
+    width: 20%;
+    color: white;
+}
+    
+.footer-section h4 {
+    color: white;
+    margin-bottom: 10px;
+}
+    
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+    
+.footer-section ul li {
+    margin-bottom: 5px;
+}
+    
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+}
+    
+.footer-section ul li a:hover {
+    color: gray;
+}
+    
+    
+.social-icons li a i {
+    font-size: 24px;
+    color: white;
+}
+     
+.footer-section ul li a:hover {
+    color: #6d6a6a;
+}
+    
+.social-icons {
+    list-style: none;
+    padding: 0;
+}
+    
+.social-icons li {
+    display: inline-block;
+    margin-right: 10px;
+}
+    
+.social-icons li a i {
+    font-size: 24px;
+}
+    
+.username-link {
+    color: white; 
+    text-decoration: none;
+}
+
+.username-link:hover {
+    color: #f7f0ee; 
+}
+    
+.login-link {
+    color: white; 
+    text-decoration: none;
+}
+    
+.login-link:hover {
+    color: #cccccc; 
+}
+    
+.navbar-toggler {
+    color: white;
+}

@@ -1,0 +1,246 @@
+{% extends 'comseller.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Vehicle Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1400px; /* Increased width for a better layout */
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 5px 5px 12px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .form-container {
+            flex: 1;
+        }
+        h5 {
+            text-align: center;
+            margin-bottom: 20px;
+            background:rgb(28, 58, 103);
+            padding:10px;
+            border-radius:10px;
+            color:#FFF;
+        }
+        form {
+            width: 100%;
+        }
+        label {
+            display: inline-block;
+            font-weight: bold;
+            margin-left:10px;
+            margin-bottom: 5px;
+            color: rgb(100, 103, 108);
+            width: calc(25% - 10px); /* Adjusted width for labels */
+            box-sizing: border-box;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        
+        select,
+        textarea {
+            width: calc(25% - 10px); /* Adjusted width for inputs */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        textarea {
+            width: calc(50% - 10px); /* Full width for textarea */
+            height: 100px;
+            resize: vertical;
+        }
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .cancel-button,
+        .submit-button {
+            width: 48%; /* Adjust the width as needed */
+            height:55px;
+            padding: 10px 20px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .cancel-button {
+            background: rgb(100, 103, 108);
+        }
+        
+        .submit-button {
+            background:rgb(28, 58, 103);
+        }
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .image-container label {
+            flex: 0 0 33%;
+            
+        }
+        
+        .image-container input[type="file"] {
+            flex: 1;
+            margin-bottom: 10px; /* Adjust margin as needed */
+        }
+        .emi-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .emi-container input[type="checkbox"] {
+           
+            width:25px;
+            height:25px;
+            color:green;
+        }
+        
+        .emi-container label {
+            margin-bottom: 10px; /* Adjust margin as needed */
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="form-container">
+            <h5><b>Fill The Form</b></h5>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="vehicle_name">Vehicle Name:</label>
+                <input type="text" id="vehicle_name" name="vehicle_name" required>
+
+                <label for="registration_number">Registration Number:</label>
+                <input type="text" id="registration_number" name="registration_number" required>
+
+
+                <label for="district">District:</label>
+                <select id="district" name="district" required>
+                    {% for district in districts %}
+                        <option value="{{ district.id }}">{{ district.district }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="brand">Brand:</label>
+                <select id="brand" name="brand" required>
+                    {% for brand in vehicle_brands %}
+                        <option value="{{ brand.id }}">{{ brand.name }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="vehicle_type">Vehicle Type:</label>
+                <select id="vehicle_type" name="vehicle_type" required>
+                    {% for vehicle_type in vehicle_types %}
+                        <option value="{{ vehicle_type.id }}">{{ vehicle_type.type_name }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="year">Year:</label>
+                <select id="year" name="year" required>
+                    {% for year in years %}
+                        <option value="{{ year.id }}">{{ year.year }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" id="phone_number" name="phone_number" required>
+
+                <label for="whatsapp_number">whatsapp Number:</label>
+                <input type="text" id="whatsapp_number" name="whatsapp_number" required>
+
+                <label for="fuel_type">Fuel Type:</label>
+                <select id="fuel_type" name="fuel_type" required>
+                    {% for fuel_type in fuel_types %}
+                        <option value="{{ fuel_type.id }}">{{ fuel_type.fuel }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="type_of_owner">Type of Owner:</label>
+                <select id="type_of_owner" name="type_of_owner" required>
+                    {% for owner_type in owner_types %}
+                        <option value="{{ owner_type.id }}">{{ owner_type.owner_type }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="type_of_gear">Type of Gear:</label>
+                <select id="type_of_gear" name="type_of_gear" required>
+                    {% for gear_type in gear_types %}
+                        <option value="{{ gear_type.id }}">{{ gear_type.gear_type }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="km_driven">Kilometers Driven:</label>
+                <input type="number" id="km_driven" name="km_driven" required>
+
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" required>
+
+                <div class="image-container">
+                    <label for="image">Image 1:</label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
+                    <label for="image2">Image 2:</label>
+                    <input type="file" id="image2" name="image2" accept="image/*">
+                    <label for="image3">Image 3:</label>
+                    <input type="file" id="image3" name="image3" accept="image/*">
+                    <label for="image4">Image 4:</label>
+                    <input type="file" id="image4" name="image4" accept="image/*">
+                </div><br>
+           
+                <label for="location_link">Location Link:</label>
+                <input type="url" id="location_link"style="border :1 px solid rgb(100, 103, 108);height:45px;width:100%;margin-right:12pxmargin-left:14px;border-radius:10px;" name="location_link" required><br>
+
+
+                <label for="description">Description:</label><br>
+                <textarea id="description" style="width:100%;"name="description" required></textarea><br>
+                
+                <div class="emi-container">
+                    <label for="emi_available">EMI Available</label>
+                    <input type="checkbox" id="emi_available" name="emi_available">
+                    
+                </div><br>
+                <div class="button-container">
+                    <a href="{% url 'staff_activity' %}" class="cancel-button"><b>Cancel</b></a>
+                    <button type="submit" class="submit-button"><b>Submit</b></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

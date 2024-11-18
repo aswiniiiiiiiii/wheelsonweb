@@ -1,0 +1,253 @@
+
+{% extends 'combuyernav.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ sellvehicle.vehicle_name }} Details</title>
+    <link rel="stylesheet" href="{% static 'sellvehicle_detail.css' %}">
+    <style>
+        /* Additional CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+        }
+        .sellvehicle-detail-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .carousel-container {
+            flex: 1;
+            max-width: 900px; /* Adjust maximum width */
+            border-right: 1px solid #ddd;
+            padding: 20px;
+        }
+        .carousel-container h4 {
+            text-align:center;
+            padding: 20px;
+        }       
+        .carousel-indicators {
+            margin-bottom: 20px;
+        }
+        .carousel-inner {
+            position: relative;
+        }
+        .carousel-image {
+            height: 450px; /* Adjust the height as needed */
+            object-fit: cover; /* Ensures the image covers the entire container */
+        }      
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .carousel-control-prev {
+            left: -25px;
+        }
+        .carousel-control-next {
+            right: -25px;
+        }
+        .sellvehicle-details {
+            flex: 1;
+            padding: 20px;
+        }
+        .sellvehicle-details h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .sellvehicle-details p {
+            margin-bottom: 10px;
+        }
+        .button-container {
+            text-align: center;
+        }
+        .location-button,
+        .whatsapp-button,
+        .history-check-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+        .location-button {
+            background-color: #007bff; /* Blue color */
+            color: #fff;
+        }
+        .location-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        .whatsapp-button {
+            background-color: green; /* Green color */
+            color: #fff;
+        }
+        .whatsapp-button:hover {
+            background-color: #1a8e32; /* Darker green on hover */
+        }
+        .history-check-btn {
+            background-color: red; /* Red color */
+            color: #fff;
+        }
+        .history-check-btn:hover {
+            background-color: #a11e1e; /* Darker red on hover */
+        }
+    
+        /* Related vehicles section */
+        .related-vehicles {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+        .related-vehicle {
+            flex: 0 1 calc(20% - 20px);
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+        .related-vehicle img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .related-vehicle h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .related-vehicle p {
+            margin-bottom: 5px;
+        }
+    
+        /* Hover effect */
+
+.related-vehicle:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class="sellvehicle-detail-container">
+        <div class="carousel-container">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    {% if sellvehicle.image2 %}
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    {% endif %}
+                    {% if sellvehicle.image3 %}
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    {% endif %}
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{ sellvehicle.image.url }}" class="d-block w-100 carousel-image" alt="{{ sellvehicle.vehicle_name }}">
+                    </div>
+                    {% if sellvehicle.image2 %}
+                    <div class="carousel-item">
+                        <img src="{{ sellvehicle.image2.url }}" class="d-block w-100 carousel-image" alt="{{ sellvehicle.vehicle_name }}">
+                    </div>
+                    {% endif %}
+                    {% if sellvehicle.image3 %}
+                    <div class="carousel-item">
+                        <img src="{{ sellvehicle.image3.url }}" class="d-block w-100 carousel-image" alt="{{ sellvehicle.vehicle_name }}">
+                    </div>
+                    {% endif %}
+                    {% if sellvehicle.image4 %}
+                    <div class="carousel-item">
+                        <img src="{{ sellvehicle.image2.url }}" class="d-block w-100 carousel-image" alt="{{ sellvehicle.vehicle_name }}">
+                    </div>
+                    {% endif %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <h4><strong>Owner:</strong> {{ sellvehicle.seller }}</h4> 
+        </div>
+        
+        <div class="sellvehicle-details">
+            <div class="details-row">
+                          
+                <p><strong>Name:</strong> {{ sellvehicle.vehicle_name }}</p>
+            </div>
+            <div class="details-row">
+                <p><strong>Registration Number:</strong> {{ sellvehicle.registration_number }}</p>
+                <p><strong>Brand:</strong> {{ sellvehicle.brand }}</p>
+            </div>
+            <div class="details-row">
+                <p><strong>Year:</strong> {{ sellvehicle.year }}</p>
+                <p><strong>Price:</strong> ${{ sellvehicle.price }}</p>
+            </div>
+            <div class="details-row">
+                <p><strong>Phone Number:</strong> {{ sellvehicle.phone_number }}</p>
+                <p><strong>Fuel Type:</strong> {{ sellvehicle.fuel_type }}</p>
+            </div>
+            <div class="details-row">
+                <p><strong>Type of Owner:</strong> {{ sellvehicle.type_of_owner }}</p>
+                <p><strong>Type of Gear:</strong> {{ sellvehicle.type_of_gear }}</p>
+            </div>
+            <div class="details-row">
+                <p><strong>Kilometers Driven:</strong> {{ sellvehicle.km_driven }}</p>
+                <p><strong>EMI Available:</strong> {% if sellvehicle.emi_available %}Yes{% else %}No{% endif %}</p>
+            </div>
+            <div class="details-row description-row">
+
+
+<p><strong>Description:</strong> {{ sellvehicle.description }}</p>
+            </div>
+                
+            <!-- Buttons for location, WhatsApp, and History Check -->
+            <div class="button-container">
+                <a href="{{ sellvehicle.location_link }}" target="_blank" class="location-button">View Location</a>
+                <a href="https://wa.me/91{{ sellvehicle.phone_number }}?text=I%20am%20interested%20in%20{{ sellvehicle.vehicle_name }},%20please%20send%20more%20details." target="_blank" class="whatsapp-button">WhatsApp</a>
+                <a href="https://www.carinfo.app/rc-search" class="history-check-btn">History Check</a>
+            </div>
+        </div>
+        
+    </div>
+    <h1>Related Vehicles</h1>
+    <div class="related-vehicles">
+        {% for vehicle in related_vehicles %}
+        <div class="related-vehicle">
+            <a href="{% url 'sellvehicle_detail' vehicle.pk %}"> <!-- Link to detail page -->
+       
+                <img class="relatedvehicle-image"style="height: 150px; " src="{{ vehicle.image.url }}" alt="{{ vehicle.vehicle_name }}"></a>
+                <h2>{{ vehicle.vehicle_name }}</h2>
+                <p><strong>Owner:</strong> {{ vehicle.seller }}</p>
+                <p><strong>Year:</strong> {{ vehicle.year }}</p>
+                <p><strong>Price:</strong> ${{ vehicle.price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    
+</body>
+</html>
+{% endblock %}

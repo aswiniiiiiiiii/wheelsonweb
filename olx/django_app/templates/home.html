@@ -1,0 +1,144 @@
+{% extends 'mainhome.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    
+    <header class="bg-dark fixed-top">
+        <nav class="container-xxl navbar navbar-expand-lg py-3 bg-dark navbar-dark" >
+          <div class="container-fluid">
+            
+  
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="gap:5px">
+              
+                               
+           
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="{% url 'index' %}"><B>Home</B></a>
+                  </li>   
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="#support"><B>About us</B></a>
+                  </li>                
+                <li class="nav-item mx-2">
+                  <a class="nav-link" href="#locations"><B>Find Location</B></a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="#questions"><B>Availability</B></a>
+                </li> 
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="#chat"><B>Chat</B></a>
+                </li>   
+                {% comment %} <li class="nav-item mx-2">
+                    <a class="nav-link" href="#locations"><B>Find Location</B></a>
+                </li>                                           {% endcomment %}
+            </div>
+          </div>
+        </nav>
+      </header>   
+    <h1>Welcome to Wheels On Web.com</h1>
+    
+    <!-- Registration Button -->
+<div class="but">
+    <a href="{% url 'register' %}">
+        <button type="button">Signup</button>
+    </a>
+    
+    <!-- Login Button -->
+    <a href="{% url 'login' %}">
+        <button type="button">Login</button>
+    </a>
+</div>  
+<div class="sell">
+    <h2>Unlock Your Wheels: Explore, Rent, and Own Vehicles at Your Fingertips! </h2>
+</div>
+<div class="sidegroup" id="portfolio">
+    <div class="image-container">
+        <img src="{% static 'images/vehiclegroup.png' %}" alt="Update" class="update-icon">
+    </div>
+    <div class="text-container">
+        <p>Welcome  journey begins here!With our user-friendly platform, you can effortlessly embark on your automotive journey with ease. Whether you're in the mood to explore various vehicle options, looking to rent a car for a weekend getaway, or ready to make a purchase and call a new vehicle your own, our comprehensive listings and intuitive interface put everything you need right at your fingertips.
+             No matter where you are or what you're looking for, [Website Name] empowers you to discover, rent, and own vehicles with unparalleled convenience and simplicity. 
+            So why wait? Unlock your wheels today and experience the freedom of mobility like never before!
+            Whether you're looking for a short-term rental to explore a new city or a long-term lease to call your own, we've got you covered. 
+            Our seamless booking and purchasing process ensures that you can secure your desired vehicle with just a few clicks, saving you time and hassle.</p>
+    </div>
+</div>
+
+
+<div class="sidegroup" id="support">
+    <div class="historys">
+        <h1>About Us!</h1>
+    </div>
+    <div class="image-container">
+        <img src="{% static 'images/contact-1.png' %}" alt="Update" class="update-icon">
+    </div>
+    <div class="text-container">
+        <p> Welcome to WHEELSONWEB, your premier destination for all things automotive. At WHEELSONWEB, we're passionate about connecting car enthusiasts, buyers, sellers, and renters in a seamless online marketplace.
+
+            Our mission is simple: to make the process of buying, selling, and renting vehicles easy, transparent, and enjoyable for everyone involved. Whether you're in the market for a sleek new ride, looking to sell your current vehicle, or seeking a temporary transportation solution, we've got you covered.Our main aims to connect buyers directly to owners.Through our websites buyers can easily find vehicles . We provide many filtering options through this tha buyers can easily find vehicles as per their requirements.Owners can easily sell or rent their vehicles through this websites.we provide good customer care support.If both owners and buyers have any doubts they can ask questions through question option . We believe in building trust with our users through transparency. Our platform provides detailed vehicle listings, including comprehensive specifications, clear pricing, and accurate condition reports. </p>
+    </div>
+</div>
+
+<div class="sidegroup" id="locations">
+    <div class="historys">
+        <h1>Pinpoint Precision: Discover the Owner's Location with Ease</h1>
+    </div>
+    <div class="image-container">
+        <img src="{% static 'images/place.png' %}" alt="Update" class="update-icon">
+    </div>
+    <div class="text-container">
+        <p>Anyone can easily find the loctaion of owner by clicking on location option. This really make easily tp connect to Owners
+            Our advanced platform utilizes cutting-edge technology to provide you with precise location information for vehicle owners, ensuring a seamless and efficient experience. 
+            Whether you're interested in viewing a vehicle in person, arranging a test drive, or finalizing a transaction, our intuitive system allows you to easily access the owner's location details with just a few clicks. Say goodbye to uncertainty and guesswork. You can trust that you'll always have the accurate information you need to make informed decisions and streamline your 
+            
+        </p>
+    </div>
+</div>
+
+
+<div class="sidegroup" id="questions">
+    <div class="historys">
+        <h1>Your Voice Matters: Questions and Complaints Welcomed 24/7</h1>
+    </div>
+    <div class="image-container">
+        <img src="{% static 'images/sup.png' %}" alt="Update" class="update-icon">
+    </div>
+    <div class="text-container">
+        <p>We believe in the power of open communication, which is why we encourage you to reach out to us at any time with your inquiries, feedback, or concerns. Our dedicated support team is available round-the-clock to address your questions and resolve any issues you may encounter.Have questions or need assistance? Our team of automotive experts is here to help. Whether you need advice on choosing the right vehicle or guidance through the selling process, we're always just a message away.customer satisfaction is at the core of everything we do. Our dedicated customer service team is committed to providing you with personalized support, responsive communication, and expert guidance throughout your journey with us. Whether you're buying, selling, or renting a vehicle, we're here to address your queries, resolve any issues promptly, and ensure a seamless experience from start to finish. Your feedback drives our continuous improvement, as we strive to exceed your expectations and make your interaction with WHEELSONWEB as smooth and enjoyable as possible.
+            Your feedback drives our commitment to excellence, ensuring that your experience with WHEELSONWEBis always exceptional.
+        </p>
+    </div>
+</div>
+
+<div class="sidegroup" id="chat">
+    <div class="historys">
+        <h1>WhatsApp Chat with Owners Made Effortless</h1>
+    </div>
+    <div class="image-container">
+        <img src="{% static 'images/chat.png' %}" alt="Update" class="update-icon">
+    </div>
+    <div class="text-container">
+        <p>We've streamlined the communication process, allowing buyers to engage directly with owners with just a tap of a button. Whether you have questions about a vehicle listing, want to negotiate a price, or simply need more information, our integrated WhatsApp chat function enables seamless and instant communication, empowering you to make informed decisions quickly and efficiently. Say goodbye to lengthy email exchanges and phone tag – with WHEELSONWEB, connecting with owners is as simple as sending a message on WhatsApp.
+
+
+
+
+
+
+            </p>
+            <BR>
+                <BR>
+    </div>
+</div>
+</body>
+</html>
+{% endblock content %}

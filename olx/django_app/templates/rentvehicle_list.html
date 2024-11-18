@@ -1,0 +1,92 @@
+{% extends 'combuyernav.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rent Vehicle List</title>
+    <style>
+        .header h1 {
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        
+        .card {
+            width: calc(20% - 20px); 
+            background-color: #fff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .card img {
+            width: 100%; 
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+        
+        .card h3 {
+            text-align: center;
+        }
+        
+        .card p {
+            margin: 5px 0;
+        }
+
+        .carousel-item img {
+            height: 480px; 
+            object-fit: cover; 
+            border-radius:25px;
+        }       
+    </style>
+</head>
+<body>
+
+<br>
+<div class="header" style="text-align: center;">
+    <h2><b>RENT VEHICLE LIST</h2>
+</div>
+
+<section>
+    <div class="card-container">
+        {% for rent_vehicle in rentvehicles %}
+        <div class="card">
+            <a href="{% url 'rentvehicle_detail' rent_vehicle.pk %}">
+              
+                <img class="relatedvehicle-image"style="height: 150px; " src="{{ rent_vehicle.image.url }}" alt="{{ rent_vehicle.vehicle_name }}">
+            </a>
+            <h3>{{ rent_vehicle.vehicle_name }}</h3>
+           
+            <p>Brand: {{ rent_vehicle.brand }}</p>
+            <p>Vehicle Type:{{ rent_vehicle.vehicle_type }}</p>
+            <p>Price per Day: ${{ rent_vehicle.price_per_day }}</p>
+        </div>
+        {% empty %}
+        <p>No rent vehicles found.</p>
+        {% endfor %}
+    </div>
+    
+</section>
+
+</body>
+</html>
+{% endblock %}

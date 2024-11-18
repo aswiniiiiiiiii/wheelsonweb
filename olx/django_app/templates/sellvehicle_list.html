@@ -1,0 +1,82 @@
+{% extends 'combuyernav.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Sell Vehicles</title>
+    <style>
+        .card {
+            transition: transform 0.2s;
+            width: 250px; 
+            height: auto; 
+            margin-bottom: 20px; 
+            border: 1px solid #ccc; 
+            border-radius: 10px; 
+           
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .container {
+            margin-top: 30px;
+            text-align: center;
+            
+           
+        }
+        .row-cols-5 .col {
+            flex: 0 0 20%;
+            max-width: 20%;
+            
+            
+        }
+        .row-cols-5 .col:last-child {
+            padding-right: 0;
+        }
+        .card-img-top {
+            width: 100%; 
+            height: 150px; 
+            object-fit: cover; 
+            border-top-left-radius: 10px; 
+            border-top-right-radius: 10px;
+        }
+        
+        
+    </style>
+</head>
+
+<body>
+    <br>
+    <div class="heading" style="text-align: center;  font-size: 30px; "
+ <h2>SELL VEHICLE LIST</h2>   
+</div>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-5 g-4"> <!-- Set the number of columns to 5 -->
+            {% for sellvehicle in sellvehicles %}
+            <div class="col">
+                <div class="card">
+                    <a href="{% url 'sellvehicle_detail' sellvehicle.pk %}"><img src="{{ sellvehicle.image.url }}" class="card-img-top" alt="{{ sellvehicle.vehicle_name }}"></a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ sellvehicle.vehicle_name }}</h5>
+                        
+                        <p class="card-text"><strong>   Brand : </strong> {{ sellvehicle.brand }}</p>
+                        <p class="card-text"><strong> price : ₹</strong> {{ sellvehicle.price }}</p>
+
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <p class="card-text">No sell vehicles found for {{ price_range }}.</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

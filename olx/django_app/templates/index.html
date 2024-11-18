@@ -1,0 +1,210 @@
+{% extends 'mainhome.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        /* Add your CSS styles here */
+        .image-containers {
+            background-image: url('{% static "images/pic1.jpg" %}');
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: brightness(90%);
+            background-position: center center;
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        .sidegroup {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .sidegroup h1{
+            color:rgb(28, 58, 103);
+            font-weight: bold;
+        }  
+    
+            
+        
+        
+        .update-icon {
+            width: 100%; /* Adjust the width as needed */
+        }
+        .text-container p{
+            font-size:22px;
+            color:rgb(100, 103, 108);
+            
+            
+
+        }        
+        .text-container {
+            max-width: 1500px; /* Adjust the max-width as needed */
+        }
+        
+        p {
+            margin: 0;
+            text-align: center;
+        }
+        
+        h2{
+            text-align: center;
+            font-size: 40px;
+            color:orange;
+            font-weight: bold;
+
+        }
+        
+        .sidegroup {
+            display: flex;
+            align-items: center;
+        }
+        
+        body {
+         
+        }
+        
+        .image-container img{
+            height: 600px;
+        }
+        
+
+        .image {
+            width: 100%;
+            height: 100%;
+            filter: brightness(70%); 
+        }
+
+        .navbar {
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+        
+        .navbar.blue {
+            background-color: blue;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important; 
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: lightgray !important; 
+        }
+
+        .content {
+            margin-top: 100px;
+        }
+
+        .but {
+            margin-left: 620px;
+        }
+        
+        button {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 40px;
+            padding-right: 40px;
+            width: 400px;
+            height: 70px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+         
+            border-radius: 20px;
+        }        
+        button:hover {
+            color: white;
+            font-weight: 800;
+            font-size: 20px;
+         
+            border-radius: 20px;
+        }
+        .col{
+            width:200px;
+            margin-left:30px;
+            background:transparent;
+        }
+        .explore-btn {
+            background:black;
+            border: px solid transparent; /* Initial transparent border */
+            transition: border-color 0.2s ease; /* Transition effect for border-color */
+            animation: borderAnimation 2s infinite alternate; /* Animation effect */
+        }
+        
+        .explore-text {
+            animation: textAnimation 2s infinite alternate;
+            color: rgba(37, 37, 35, 0.364); /* Initial color */
+        }
+        
+        @keyframes borderAnimation {
+            0% {
+                border-color: transparent;
+            }
+            50% {
+                border-color: orange;
+            }
+            100% {
+                border-color: transparent;
+            }
+        }
+        
+        @keyframes textAnimation {
+            0% {
+                color: rgba(37, 37, 35, 0.364);
+            }
+            50% {
+                color: orange;
+            }
+            100% {
+                color: rgba(37, 37, 35, 0.364);
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="image-containers" style="color:orange;padding-left:70px;padding-top:120px;">
+        <h1><b><b>Wheels On Web</b></b></h1>
+        <h3><b>Unlock Adventure:<br> Explore Our Wide Selection of Vehicles</b></h3>
+        <div class="but" style="margin-top: 310px; margin-left: 35%;">
+            <a href="{% url 'home' %}">
+                <button type="button" class="explore-btn">
+                    <span class="explore-text">Explore More</span>
+                </button>
+            </a>
+        </div>           
+    </div>  
+    <header class="fixed-top">
+        <nav class="container-xxl navbar navbar-expand-lg py-3">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">           
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link" href="{% url 'login' %}"><B>Login</B></a>
+                        </li>                
+                        <li class="nav-item mx-2">
+                            <a class="nav-link" href="{% url 'register' %}"><B>Signup</B></a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>  
+</body>
+</html>
+
+
+{% endblock %}

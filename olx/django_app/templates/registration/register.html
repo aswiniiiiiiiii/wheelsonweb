@@ -1,0 +1,114 @@
+{% extends 'nav.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration</title>
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 20px auto;
+        }
+
+        .card-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="submit"] {
+            width: 400px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .checkbox-label {
+            font-size: 14px;
+        }
+        .card-title{
+            color:rgb(28, 58, 103);
+            text-align:center;
+        }
+        .card button{
+            width:400px;
+            margin-top:30px;
+            background:rgb(28, 58, 103);
+            color:white;
+            padding:10px;
+            border-radius:20px;
+        }
+        .card button:hover{
+            width:400px;
+            margin-top:30px;
+            background:white;
+            color:rgb(28, 58, 103);
+            padding:10px;
+            border:1px solid rgb(28, 58, 103);
+            border-radius:20px;
+        }
+        .main{
+            margin-top:50px;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="card" style="width:880px;">
+        <div class="card-title"><h1><b>Signup</b></h1></div>
+        <div class="row g-0">
+          <div class="col-md-6">
+            <img src="{% static 'images/adv15.jpg' %}" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-6">
+            <div class="card-body">
+              
+              <form method="post" action="{% url 'register' %}">
+                  {% csrf_token %}
+                  <label for="username">Username:</label><br>
+                  <input type="text" name="username" required><br>
+                  
+                  <label for="password">Password:</label><br>
+                  <input type="password" name="password" required><br>
+      
+                  <label for="email">Email:</label><br>
+                  <input type="email" name="email" required><br>
+      
+                  <input type="checkbox" name="is_staff" id="is_staff">
+                  <label for="is_staff" class="checkbox-label">Tick if you are an owner</label><br>
+      
+                  
+                  <button type="submit" class="submit-button"><b>Signup</b></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
+{% endblock content %}

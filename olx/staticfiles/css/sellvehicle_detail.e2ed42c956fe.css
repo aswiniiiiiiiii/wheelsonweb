@@ -1,0 +1,55 @@
+/* sellvehicle_detail.css */
+.sellvehicle-detail-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sellvehicle-details {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sellvehicle-details img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.sellvehicle-details p {
+  margin: 5px 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.location-button,
+.whatsapp-button {
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.location-button {
+  background-color: #27ae60;
+}
+
+.whatsapp-button {
+  background-color: #4caf50;
+}
+
+.location-button:hover,
+.whatsapp-button:hover {
+  opacity: 0.8;
+}

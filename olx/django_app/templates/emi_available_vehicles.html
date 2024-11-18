@@ -1,0 +1,71 @@
+{% extends 'combuyernav.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Available Vehicles</title>
+    <style>
+        .heading h1 {
+            font-size:30px;
+            padding-top: 20px;
+        }
+        .related-vehicles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+        .related-vehicle {
+            flex: 0 1 calc(20% - 20px);
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+        .related-vehicle img {
+            width: 100%;
+            height: 150px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .related-vehicle h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .related-vehicle p {
+            margin-bottom: 5px;
+        }
+
+        /* Hover effect */
+        .related-vehicle:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="heading" style="text-align:center;">
+    <h1>EMI AVAILABLE VEHICLES</h1>
+    </div>
+    <div class="related-vehicles">
+        {% for vehicle in emi_available_vehicles %}
+            <div class="related-vehicle">
+                <a href="{% url 'sellvehicle_detail' vehicle.id %}">
+                    <img src="{{ vehicle.image.url }}" alt="{{ vehicle.vehicle_name }}">
+                </a>
+                <h2>{{ vehicle.vehicle_name }}</h2>
+                <p><strong>Registration Number:</strong> {{ vehicle.registration_number }}</p>
+                <p><strong>Owner:</strong> {{ vehicle.seller }}</p>
+                <p><strong>Year:</strong> {{ vehicle.year }}</p>
+                <p><strong>Price:</strong> ${{ vehicle.price }}</p> 
+            </div>
+        {% empty %}
+            <p>No EMI available vehicles found.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
+{% endblock content %}

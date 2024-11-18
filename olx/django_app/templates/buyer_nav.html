@@ -1,0 +1,229 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/navseller.css'%}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+
+
+        header {
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer-section{
+            background-color: rgb(28, 58, 103);
+        }
+        .big-footer li{
+            background-color: rgb(28, 58, 103);
+        }
+    </style>   
+</head>
+
+
+<body>
+
+<div class="total" Style="">
+    <nav class="navbar navbar-expand-lg" style="background-color:rgb(28, 58, 103);">
+        <div class="container-fluid d-flex justify-content-center align-items-center" >
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color:rgb(28, 58, 103);">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" style="margin-right: 30px;background-color:rgb(28, 58, 103);">
+                        <a class="nav-link" href="{% url 'buyer_activity' %}" style="color: white;"><i class="fas fa-home"></i> <b>Home</b></a>
+                    </li>
+
+                    <li class="nav-item dropdown" style="margin-right: 30px;background-color:rgb(28, 58, 103);">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+                            <i class="fas"></i> <b>Year</b>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_year_range' 0 2 %}">0-2 year</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_year_range' 3 6 %}">3-6 year</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_year_range' 6 10 %}">6-10 year</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_year_range' 10 100 %}">Above 10 year</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown" style="margin-right: 30px; background-color:rgb(28, 58, 103);">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+                            <i class="fas"></i> <b>Type</b>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_vehicle_type' 'Bike' %}">Bike</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_vehicle_type' 'Car' %}">Car</a></li>
+                        </ul>
+                    </li>
+                 
+                    <li class="nav-item dropdown" style="margin-right: 30px;background-color:rgb(28, 58, 103);">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+                            <i class="fas"></i> <b>Price</b>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_price_range' 'below-50k' %}">Below 50K</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_price_range' '50k-to-2lakh' %}">50 K-2 Lakh</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_price_range' '2lakh-to-5lakh' %}">2 lakh-5 Lakh</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_price_range' 'above-5lakh' %}">Above 5 Lakh</a></li>
+                        </ul>
+                    </li>     
+                    <li class="nav-item dropdown" style="margin-right: 30px;background-color:rgb(28, 58, 103);">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+
+
+<i class="fas"></i> <b>KM Driven</b>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_km_driven' 'below10000' %}">Below 10,000 KM</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_km_driven' '10000to15000' %}">10,000 - 15,000 KM</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_km_driven' '15000to25000' %}">15,000 - 25,000 KM</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_km_driven' 'above25000' %}">Above 25,000 KM</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item dropdown" style="margin-right: 30px;background-color:rgb(28, 58, 103);">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+                            <i class="fas"></i> <b>Fuel</b>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_fuel_type' 'Petrol' %}">Petrol</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_fuel_type' 'Diesel' %}">Diesel</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_fuel_type' 'Electric' %}">Electric</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_fuel_type' 'Gas' %}">Gas</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown" style="margin-right: 30px; background-color:rgb(28, 58, 103);">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdownOwner" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+                            <i class="fas"></i> <b>Owner</b>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownOwner">
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_owner' 'First owner' %}">First Owner</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_owner' 'Second owner' %}">Second Owner</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_owner' 'Third owner' %}">Third Owner</a></li>
+                          
+                        </ul>
+                    </li>
+                                        
+                    <li class="nav-item dropdown" style="margin-right: 30px;background-color:rgb(28, 58, 103);">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+                            <i class="fas"></i> <b>District</b>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_district' 'Thiruvananthapuram' %}">Thiruvananthapuram</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_district' 'Kollam' %}">Kollam</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_district' 'Pathanamthitta' %}">Pathanamthitta</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_district' 'Alappuzha' %}">Alappuzha</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_district' 'Kottayam' %}">Kottayam</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_district' 'Idukki' %}">Idukki</a></li>
+
+
+<li><a class="dropdown-item" href="{% url 'vehicles_by_district' 'Ernakulam' %}">Ernakulam</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_district' 'Thrissur' %}">Thrissur</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_district' 'Palakkad' %}">Palakkad</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_district' 'Malappuram' %}">Malappuram</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_district' 'Kozhikode' %}">Kozhikode</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_district' 'Wayanad' %}">Wayanad</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_district' 'Kannur' %}">Kannur</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_district' 'Kasaragod' %}">Kasaragod</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown" style="margin-right: 30px; background-color:rgb(28, 58, 103);">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdownGear" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+                            <i class="fas"></i> <b>Gear </b>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownGear">
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_gear_type' 'Automatic' %}">Automatic</a></li>
+                            <li><a class="dropdown-item" href="{% url 'vehicles_by_gear_type' 'Manual' %}">Manual</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" style="margin-right: 30px;background-color: rgb(28, 58, 103);">
+                        <a class="nav-link" href="{% url 'emi_available_vehicles' %}" style="color: white;"> <b>EMI</b></a>
+                    </li>
+                </ul>
+
+                {% if user.is_authenticated %}
+                <div class="dropdown" style="background-color:rgb(28, 58, 103);">
+                    <a class="btn dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+                        <b>{{ user.username }}</b>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                        
+                        
+                        <li><a class="dropdown-item" href="{% url 'login' %}">Logout</a></li>
+                    </ul>
+                </div>
+                {% else %}
+                <a href="{% url 'login' %}" style="color: white;">Login</a>
+                {% endif %}
+                <form class="d-flex" role="search" action="{% url 'search_vehicles' %}" method="get">
+                    <input class="form-control me-2" name="q" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline" style="color: white; border: 2px solid white;" type="submit">Search</button>
+                </form>
+
+            </div>
+        </div>
+    </nav> 
+</div>
+
+
+{% block content %}
+
+{% endblock content%}
+<footer class="big-footer" style="background-color:rgb(28, 58, 103);">
+    <div class="footer-section">
+        <h4>Explore</h4>
+        <ul>
+            <li><a href="">Sell</a></li>
+            <li><a href="">Rent</a></li>
+            <li><a href="">Buying</a></li>
+            
+        </ul>
+    </div>
+
+    
+
+    <div class="footer-section">
+        <h4>Connect</h4>
+        <ul class="social-icons">
+            <li><a href="https://www.instagram.com">Instagram <i class="fab fa-instagram"></i></a></li><br>
+            <li><a href="https://www.twitter.com">Twitter <i class="fab fa-twitter"></i></a></li><br>
+            <li><a href="https://www.facebook.com">Facebook <i class="fab fa-facebook-f"></i></a></li><br>
+        </ul>
+    </div>
+    <div class="footer-section">
+        <h4>Languages</h4>
+        <ul>
+            <li><a href="language/english">English</a></li>
+            
+        </ul>
+    </div>
+
+    <div class="footer-section">
+        <h4>Features</h4>
+        <ul>
+            <li>Buying and Selling</li>
+            <li>Personalized recommendations</li>
+            <li>Rent Vehicles</li>
+            <li>Generate Your Review</li>
+
+        </ul>
+    </div>
+</footer>
+
+</div>
+</body>
+</html>
